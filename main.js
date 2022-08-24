@@ -3,7 +3,20 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+const modal = document.querySelector("#modal");
+modal.classList.add("hidden");
+const likeBtn = document.querySelectorAll(".like");
 
+likeBtn.addEventListener("click", mimicServerCall)
+
+fetch("http://mimicServer.example.com", mimicServerCall)
+.then((response) => response.json())
+.then((data) => console.log(data))
+//failure message
+.catch((error) => {
+  modal.classList.remove("hidden")
+  console.log(error.message)
+})
 
 
 
